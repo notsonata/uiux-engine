@@ -1,0 +1,7 @@
+interface:
+  display_name: "Restyle"
+  short_description: "Apply DESIGN.md without changing product behavior"
+  default_prompt: "Restyle this UI using DESIGN.md and return a concise before/after."
+
+policy:
+  allow_implicit_invocation: false
