@@ -63,6 +63,14 @@ These are the only four user-facing entrypoints.
 - Visual character is deliberate, not an agent's default aesthetic.
 - Audits use evidence and severity, not arbitrary UX scores.
 
+## Architectural invariant
+
+UIUX Engine exposes **exactly four public actions**: `ux-design`, `ux-audit`, `ux-review`, and `restyle`.
+
+The eight skills and two agents are internal implementation details. Adapters must not flatten them into additional user-facing workflows.
+
+See [ADAPTERS.md](ADAPTERS.md) for the host-integration contract and conformance rules.
+
 ## Portable command model
 
 This repository defines canonical command contracts, not a Claude-specific plugin API.
