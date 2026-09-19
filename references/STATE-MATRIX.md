@@ -1,19 +1,31 @@
 # State Matrix
 
-For every meaningful component, view, or workflow, determine which states apply.
+The canonical state-completeness contract contains six states. Additional states are conditional.
 
-| State | Questions |
+## Six required states
+
+| State | Question |
+|---|---|
+| Loading | What does the user see while required work is pending? |
+| Empty | Is this first-use empty, zero results, or genuinely no data? |
+| Partial | What remains usable when only some data or operations succeed? |
+| Error | What failed, what is safe, and how can the user recover? |
+| Success | How is completion or the resulting state made clear? |
+| Offline | What remains usable, what is stale, and what retries later? |
+
+A state may be not applicable, but it should be considered explicitly.
+
+## Conditional states
+
+Use when the product requires them:
+
+| State | Question |
 |---|---|
 | Initial | What appears before the user acts? |
-| Loading | Is progress known, unknown, local, or page-wide? |
-| Empty | Is this a first-use empty state or a zero-results state? |
-| Partial | What happens when only some data is available? |
-| Success | What confirms completion? What is the next likely action? |
-| Error | Is the error local, recoverable, destructive, or blocking? |
-| Validation | Which field is wrong and how can it be corrected? |
-| Disabled | Why is the action unavailable, if explanation is needed? |
-| Offline | What remains usable and what is deferred? |
-| Permission denied | What permission is missing and how can it be obtained? |
-| Expired/session lost | What work can be preserved? |
-| Destructive pending | Is confirmation, undo, or delayed deletion appropriate? |
-| Stale/conflict | What changed elsewhere and how should conflicts be resolved? |
+| Validation | Which field/action is invalid and how is it corrected? |
+| Disabled | Why is this unavailable, if explanation is needed? |
+| Permission denied | What access is missing and how can it be obtained? |
+| Session expired | What work can be preserved? |
+| Destructive pending | Is confirmation, undo, or recovery appropriate? |
+| Stale/conflict | What changed elsewhere and how is the conflict resolved? |
+| Queued/running/cancelled | How does long-running work progress and recover? |

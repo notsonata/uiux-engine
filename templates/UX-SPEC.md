@@ -1,75 +1,102 @@
-# UX Specification Template
+# UX Specification
 
-## 1. Problem
+## 1. Intent brief
 - User:
-- Context:
-- Job to be done:
-- Current pain:
-- Desired outcome:
-
-## 2. Evidence and assumptions
-- Known facts:
+- Trigger/context:
+- Primary job:
+- Information/decision needed:
+- Worst plausible mistake:
+- Constraints:
 - Assumptions:
-- Unknowns that materially affect the design:
 
-## 3. Primary flow
+## 2. Primary flow
 1.
 2.
 3.
+
+## 3. Wireframe
+
+Use a low-fidelity structural representation. Show hierarchy, regions, controls, and states, not final decoration.
+
+```text
+┌────────────────────────────────────────────┐
+│ Screen title                         Action │
+├────────────────────────────────────────────┤
+│ Primary task/content                       │
+│                                            │
+├────────────────────────────────────────────┤
+│ Supporting / secondary content             │
+└────────────────────────────────────────────┘
+```
 
 ## 4. Information hierarchy
 - Primary:
 - Secondary:
 - Tertiary:
 - Deferred/advanced:
+- Intended scan path:
+- Density:
 
 ## 5. Screen/component inventory
 | Surface | Purpose | Primary action | Key information |
 |---|---|---|---|
 
-## 6. State coverage
+## 6. Six-state coverage
 - Loading:
 - Empty:
 - Partial:
 - Error:
 - Success:
-- Disabled:
-- Offline/permission/session states if applicable:
+- Offline:
 
-## 7. Interaction rules
+### Conditional states
+- Initial:
+- Validation:
+- Disabled/unavailable:
+- Permission/session:
+- Destructive pending:
+- Stale/conflict:
+- Background-job states:
+
+## 7. Interaction and affordance
 - Navigation:
 - Selection:
 - Editing:
 - Destructive actions:
 - Confirmation/undo:
-- Keyboard/input behavior:
-
-## 8. Accessibility
-- Semantic structure:
+- Feedback:
 - Keyboard/focus:
-- Labels/instructions:
+- Touch/pointer behavior:
+
+## 8. Form UX
+- Fields/grouping:
+- Defaults:
+- Validation timing:
+- Error/recovery:
+- Progressive disclosure:
+
+## 9. Design system + visual character
+- DESIGN.md constraints:
+- Type:
+- Color:
+- Space/density:
+- Finish:
+- Off-system extensions, if any:
+
+## 10. Responsive + accessibility requirements
+- Narrow layout transformation:
+- Spacious layout behavior:
+- Semantic/keyboard requirements:
+- Focus:
 - Contrast/non-color cues:
 - Motion alternatives:
-- Touch target considerations:
-
-## 9. Responsive behavior
-- Small screens:
-- Medium screens:
-- Large screens:
-- Pointer vs touch differences:
-
-## 10. Visual direction
-- Typography:
-- Density:
-- Spacing:
-- Color roles:
-- Surface treatment:
-- Visual character:
+- Target sizing:
 
 ## 11. Acceptance criteria
 - [ ] Primary task is obvious
-- [ ] Major states are covered
-- [ ] Error recovery is defined
-- [ ] Keyboard and focus paths are viable
-- [ ] Responsive changes preserve task priority
-- [ ] Components use system patterns where available
+- [ ] Worst-case action is proportionally protected
+- [ ] Six required states were considered
+- [ ] Error recovery preserves work where practical
+- [ ] Keyboard/focus paths are viable
+- [ ] Responsive behavior preserves task priority
+- [ ] Components follow DESIGN.md or record a deliberate extension

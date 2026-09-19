@@ -1,31 +1,36 @@
-# UX Audit Template
+# UX Audit
 
 ## Executive summary
-State the main usability risks and systemic themes without assigning an arbitrary numeric score.
+
+State the highest-impact usability risks and systemic themes. Do not assign an arbitrary numeric score.
 
 ## Findings
 
-### Finding: <short descriptive title>
+### <descriptive finding title>
 - Severity: blocker / high / medium / low
-- Surface:
 - Evidence:
+- Surface/location:
 - User impact:
-- Why it happens:
 - Recommended change:
 - Verification:
-
-## Cross-cutting patterns
-- Navigation and architecture:
-- Hierarchy and comprehension:
-- Interaction and feedback:
-- Forms and input:
-- Accessibility:
-- Responsive behavior:
-- Visual consistency:
+- Confidence: observed / inferred / unverified
 
 ## Priority order
-1. Safety, data loss, task blockers
-2. Core-task usability failures
-3. Accessibility barriers
-4. Repeated friction and inconsistency
+
+1. Core-task blockers, safety/data-loss risk, and severe accessibility barriers
+2. Core-task comprehension and completion failures
+3. State/recovery failures
+4. Repeated friction and design-system drift
 5. Cosmetic refinement
+
+## Cross-cutting check
+
+- Intent/task fit:
+- Hierarchy/density:
+- State completeness:
+- Forms:
+- Feedback/affordance:
+- Accessibility:
+- Responsive behavior:
+- DESIGN.md consistency:
+- Visual character:
