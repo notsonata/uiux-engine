@@ -1,0 +1,70 @@
+{
+  "design-destructive-settings": {
+    "files": {
+      "README.md": "# Workspace Admin\n\nAuthenticated web application for workspace owners. No settings screen exists yet.\n"
+    },
+    "changes": {},
+    "runner_note": "There is no existing settings implementation. Design from the product context only."
+  },
+  "design-existing-system": {
+    "files": {
+      "DESIGN.md": "# DESIGN.md\n\n## Product principles\n- Operational clarity over decoration.\n- Dense but scannable interfaces.\n- Status must never rely on color alone.\n\n## Visual character\n- Type: compact sans-serif hierarchy\n- Color: neutral surfaces with one indigo accent\n- Space: 4px base rhythm, compact density\n- Finish: 6px radius, 1px borders, minimal shadow\n\n## Components\n- StatusBadge: text label + icon + semantic color\n- DataTable: compact rows, sticky header\n- Button: primary, secondary, ghost, destructive\n",
+      "src/components/StatusBadge.tsx": "export function StatusBadge({ status }: { status: 'ok' | 'failed' | 'running' }) {\n  const icon = status === 'failed' ? '!' : status === 'running' ? '…' : '✓';\n  return <span className={'status status-' + status}>{icon} {status}</span>;\n}\n",
+      "src/app/analytics/page.tsx": "export default function Analytics() {\n  return <main><h1>Analytics</h1><section className='cards'><div>Total jobs 1,284</div><div>Failed 37</div><div>Success rate 97.1%</div></section><table><thead><tr><th>Job</th><th>Status</th><th>Started</th><th>Duration</th></tr></thead><tbody><tr><td>#1284</td><td>failed</td><td>10:42</td><td>2m 11s</td></tr></tbody></table></main>;\n}\n"
+    },
+    "changes": {},
+    "runner_note": "DESIGN.md and reusable components are authoritative existing system evidence."
+  },
+  "audit-screenshot-limited-evidence": {
+    "files": {
+      "SCREENSHOT.md": "# Static checkout screenshot transcription\n\nVisible at 1440x900 only.\n\n- Page title: Checkout\n- Two-column layout.\n- Left: Contact information, Shipping address, Payment details.\n- Right: Order summary and total.\n- Required fields use red asterisks.\n- Card number field has a visible label and example placeholder.\n- Country is a select labeled Country.\n- Primary button says Pay $84.20.\n- A small gray question-mark icon appears beside CVV; no visible text explanation.\n- One validation message is visible under Postal code: Invalid.\n- No focus state, hover state, loading state, keyboard behavior, mobile layout, or screen-reader output can be observed from this screenshot.\n"
+    },
+    "changes": {},
+    "runner_note": "SCREENSHOT.md is a transcription of the only static screenshot available. Treat only those visible facts as observed evidence. Runtime and other viewports are unverified."
+  },
+  "audit-state-heavy-flow": {
+    "files": {
+      "src/UploadStatus.tsx": "type Job = { id: string; status: 'uploading' | 'processing' | 'done' | 'failed' };\n\nexport function UploadStatus({ job }: { job?: Job }) {\n  if (!job) return <div><input type='file' /><button>Upload</button></div>;\n  if (job.status === 'done') return <a href={'/transcripts/' + job.id}>Open transcript</a>;\n  if (job.status === 'failed') return <div>Something went wrong <button>Retry</button></div>;\n  return <div className='spinner'>Processing…</div>;\n}\n",
+      "README.md": "# Transcription upload\n\nFiles upload to storage, then a server job performs transcription. Users may leave the page and return later. Jobs can fail during upload or processing. Cancellation is supported by the backend but is not currently shown in the component.\n"
+    },
+    "changes": {},
+    "runner_note": "Audit the implemented upload-and-processing experience in src/UploadStatus.tsx using README.md as product context."
+  },
+  "review-regression-scope": {
+    "files": {
+      "src/JobsTable.tsx": "export function JobsTable({ loading }: { loading: boolean }) {\n  return <section>{loading ? <table><tbody><tr><td>Loading job rows…</td></tr></tbody></table> : <table><tbody><tr><td>#42</td><td>Failed</td><td><button>View details</button></td></tr></tbody></table>}</section>;\n}\n",
+      "src/SettingsLegacy.tsx": "export function SettingsLegacy() { return <div><button>Save</button><button>Delete account</button><p style={{color:'#aaa'}}>Tiny low-contrast help text</p></div>; }\n"
+    },
+    "changes": {
+      "src/JobsTable.tsx": "export function JobsTable({ loading }: { loading: boolean }) {\n  return <section>{loading ? <div className='fullscreen-spinner'>Loading…</div> : <table><tbody><tr><td>#42</td><td>Failed</td><td><button aria-label='More actions'>•••</button></td></tr></tbody></table>}</section>;\n}\n"
+    },
+    "runner_note": "The legacy settings file is intentionally unchanged. Review the working-tree diff, not the whole repository."
+  },
+  "review-copy-and-affordance": {
+    "files": {
+      "src/DraftToolbar.tsx": "export function DraftToolbar() { return <div><button className='danger'>Delete draft</button><span role='status'>Draft saved</span></div>; }\n"
+    },
+    "changes": {
+      "src/DraftToolbar.tsx": "export function DraftToolbar() { return <div><button className='danger'>🗑</button><span role='status'>Done</span></div>; }\n"
+    },
+    "runner_note": "The current working-tree diff intentionally weakens destructive-action labeling and saved-state copy."
+  },
+  "restyle-preserve-function": {
+    "files": {
+      "DESIGN.md": "# DESIGN.md\n\n## Product principles\n- Editorial clarity.\n- Strong typographic hierarchy.\n- Preserve information density.\n\n## Visual character\n- Type: serif display headings, neutral sans UI/body\n- Color: warm off-white canvas, charcoal text, deep green accent\n- Space: 8px rhythm, restrained whitespace\n- Finish: 4px radius, thin rules, almost no shadow\n\n## Accessibility\n- Visible focus ring.\n- Status must use text or icon in addition to color.\n- Respect reduced motion.\n",
+      "dashboard.html": "<main class='dashboard'><header><h1>Operations Dashboard</h1><button id='refresh'>Refresh</button></header><section class='metrics'><article><h2>Revenue</h2><strong>$82,410</strong></article><article><h2>Orders</h2><strong>1,284</strong></article><article><h2>Failed jobs</h2><strong>37</strong></article></section><table><thead><tr><th>Store</th><th>Orders</th><th>Status</th></tr></thead><tbody><tr><td>North</td><td>420</td><td>Healthy</td></tr><tr><td>West</td><td>381</td><td>Delayed</td></tr></tbody></table></main>",
+      "styles.css": "body{font-family:Arial;background:#fff;color:#222}.dashboard{max-width:1200px;margin:auto;padding:48px}header{display:flex;justify-content:space-between}.metrics{display:flex;gap:24px}.metrics article{padding:24px;border-radius:16px;box-shadow:0 8px 30px #ddd;background:linear-gradient(135deg,#fff,#f5f1ff)}button{border:0;border-radius:999px;padding:12px 20px;background:#7c3aed;color:#fff}table{width:100%;margin-top:32px;border-collapse:collapse}td,th{padding:18px;border-bottom:1px solid #eee;text-align:left}"
+    },
+    "changes": {},
+    "runner_note": "Behavior, information architecture, and copy are approved. Restyle dashboard.html and styles.css only within the DESIGN.md visual system."
+  },
+  "restyle-detect-structural-problem": {
+    "files": {
+      "DESIGN.md": "# DESIGN.md\n\n## Visual character\n- Type: compact neutral sans\n- Color: white/gray surfaces, blue primary, red destructive\n- Space: 4px rhythm\n- Finish: 6px radius, 1px borders, no decorative shadows\n\n## Interaction\n- Destructive actions use destructive styling.\n- Focus must be visible.\n",
+      "settings.html": "<main><h1>Workspace settings</h1><form><label>Name <input value='Acme'/></label><div class='actions'><button>Save changes</button><button>Transfer ownership</button><button>Delete workspace</button></div></form></main>",
+      "styles.css": "body{font-family:Arial;color:#222}.actions{display:flex;gap:8px;margin-top:16px}button{padding:8px 12px;border:1px solid #ddd;background:#fff;border-radius:6px}"
+    },
+    "changes": {},
+    "runner_note": "The destructive actions are structurally mixed into the main save flow. Do not silently redesign that workflow under /restyle; flag it and limit edits to safe visual-system changes."
+  }
+}

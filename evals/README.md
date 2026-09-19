@@ -62,3 +62,37 @@ For each host:
 - the behavioral fixture suite covers every public command with multiple cases
 
 The actual LLM behavior still needs to be executed on each host. Those runs should come next, after this structural foundation is stable.
+
+
+## Claude Code runner
+
+Claude Code is the first executable host runner.
+
+Prerequisites:
+
+    claude --version
+    git --version
+
+Claude Code must already be authenticated.
+
+Run all cases:
+
+    python evals/runners/claude_code.py
+
+Run selected cases:
+
+    python evals/runners/claude_code.py --case design-destructive-settings --case review-regression-scope
+
+Optionally select a model:
+
+    python evals/runners/claude_code.py --model sonnet
+
+The runner creates a disposable fixture repository, installs the Claude Code adapter, commits the fixture baseline, applies any intended uncommitted diff, invokes the explicit slash command with Claude Code print mode, captures JSON output, and records the resulting git diff.
+
+For non-restyle cases, Edit and Write are explicitly disallowed. Restyle may edit only the disposable fixture repository.
+
+Results are written beneath evals/results/claude-code/. Generate a human grading sheet with:
+
+    python evals/grade.py evals/results/claude-code/<run-id>
+
+Raw transcripts should not be committed by default.
