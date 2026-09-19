@@ -110,6 +110,18 @@ New values must either:
 
 Silent one-off styling is considered drift.
 
+## Conformance
+
+The repository includes automated structural conformance tests and host-neutral behavioral eval fixtures.
+
+Run locally:
+
+```bash
+python -m unittest discover -s tests -p "test_*.py" -v
+```
+
+See [evals/README.md](evals/README.md) for the behavioral suite. CI runs the structural checks on pushes to `main` and on pull requests.
+
 ## License
 
 MIT.
