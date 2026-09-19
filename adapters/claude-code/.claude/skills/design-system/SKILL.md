@@ -85,7 +85,7 @@ Write or update `DESIGN.md` at the project root with:
 
 Each important value should have a reason, not merely a number.
 
-Use `../../references/DESIGN-SYSTEM-CHECKLIST.md` as a completeness pass and `../../templates/DESIGN-TEMPLATE.md` when creating the file from scratch.
+Use `DESIGN-SYSTEM-CHECKLIST.md` as a completeness pass and `DESIGN-TEMPLATE.md` when creating the file from scratch.
 
 ## Gap questions
 
