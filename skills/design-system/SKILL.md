@@ -98,3 +98,7 @@ After DESIGN.md exists:
 - flag off-system values;
 - either replace them with an existing token or record a deliberate extension;
 - never create silent one-off tokens merely to make one screen look good.
+
+## Pattern references
+
+When documenting recurring compositions, consult `../../references/patterns/INDEX.md` for pattern-level behavior. DESIGN.md should capture product-specific system decisions, while the pattern library remains generic reference guidance.

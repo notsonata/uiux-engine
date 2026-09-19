@@ -88,6 +88,11 @@ If a host cannot register literal slash commands, expose equivalent actions with
 
 See [ADAPTERS.md](ADAPTERS.md) for the adapter contract.
 
+
+## Pattern knowledge
+
+The internal skills can consult [references/patterns/INDEX.md](references/patterns/INDEX.md) for reusable interaction patterns. Patterns are reference material, not additional public skills or commands.
+
 ## Package layout
 
 ```text

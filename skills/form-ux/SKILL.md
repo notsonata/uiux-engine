@@ -58,3 +58,7 @@ Maintain logical focus order, visible focus, programmatic labels, useful error a
 ## Handoff
 
 Return field inventory, grouping, defaults, validation timing, error/recovery behavior, and progressive-disclosure rules.
+
+## Pattern references
+
+For complex forms, settings, validation, search, permissions, or multi-step entry, consult `../../references/patterns/INDEX.md` and load only the relevant form patterns.

@@ -61,3 +61,7 @@ Return:
 - density choice;
 - navigation/grouping decisions;
 - items to remove, hide, or disclose.
+
+## Pattern references
+
+When a concrete navigation or data-presentation problem appears, consult `../../references/patterns/INDEX.md` and load only the relevant navigation or data-display pattern. Patterns support the hierarchy decision; they do not replace task reasoning.

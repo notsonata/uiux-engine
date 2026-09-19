@@ -63,3 +63,7 @@ These do not increase the canonical six-state contract. They are conditional pro
 ## Handoff
 
 Return a compact state matrix with trigger, UI, available actions, persistence, and recovery.
+
+## Pattern references
+
+For asynchronous, empty, offline, or long-running workflows, consult `../../references/patterns/INDEX.md` and load the smallest relevant feedback/workflow patterns before finalizing the state matrix.

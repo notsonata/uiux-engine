@@ -56,3 +56,7 @@ Motion should explain change, relationship, or feedback. It must not block the u
 ## Handoff
 
 Return affordance issues, feedback rules, destructive-action protection, and status/motion requirements.
+
+## Pattern references
+
+For destructive actions, bulk/row actions, overlays, or feedback behavior, consult `../../references/patterns/INDEX.md` and load only the relevant action, feedback, or overlay patterns.
