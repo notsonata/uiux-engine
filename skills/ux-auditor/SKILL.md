@@ -67,3 +67,7 @@ Order by user impact and frequency:
 3. recovery/state failures;
 4. repeated friction and design-system drift;
 5. cosmetic refinement.
+
+## Pattern references
+
+Use `../../references/patterns/INDEX.md` only when a concrete pattern is relevant to an observed finding. Do not generate findings merely because an interface differs from a library pattern.
