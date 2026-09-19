@@ -83,7 +83,8 @@ If a host cannot register literal slash commands, expose equivalent actions with
 
 - **Claude Code:** available under `adapters/claude-code/`.
 - **Codex:** available under `adapters/codex/`.
-- Cursor and OpenCode adapters will be added independently and must preserve the same four-action public surface.
+- **Cursor:** available under `adapters/cursor/`.
+- OpenCode will be added independently and must preserve the same four-action public surface.
 
 See [ADAPTERS.md](ADAPTERS.md) for the adapter contract.
 
