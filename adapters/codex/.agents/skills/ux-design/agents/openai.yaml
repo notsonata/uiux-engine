@@ -1,0 +1,7 @@
+interface:
+  display_name: "UX Design"
+  short_description: "Wireframe and UX spec before implementation"
+  default_prompt: "Design this UI or flow with a wireframe and implementation-ready UX specification before making code changes."
+
+policy:
+  allow_implicit_invocation: false

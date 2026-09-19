@@ -1,0 +1,7 @@
+interface:
+  display_name: "UX Review"
+  short_description: "UX pass on the current diff before merge"
+  default_prompt: "Review the current diff for UX regressions and merge-relevant risks."
+
+policy:
+  allow_implicit_invocation: false
