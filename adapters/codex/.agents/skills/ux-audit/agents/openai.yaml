@@ -1,0 +1,7 @@
+interface:
+  display_name: "UX Audit"
+  short_description: "Prioritized audit of an existing interface"
+  default_prompt: "Audit this UI target and return evidence-based, severity-ranked findings with concrete fixes."
+
+policy:
+  allow_implicit_invocation: false
