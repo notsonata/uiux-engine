@@ -222,6 +222,17 @@ class BehavioralFixtureTests(unittest.TestCase):
             self.assertNotIn(case["id"], ids)
             ids.add(case["id"])
 
+    def test_fixture_ids_match_cases(self):
+        fixtures = json.loads(text("evals/fixtures.json"))
+        case_ids = {case["id"] for case in self.cases}
+        self.assertEqual(set(fixtures), case_ids)
+
+    def test_fixtures_have_file_maps(self):
+        fixtures = json.loads(text("evals/fixtures.json"))
+        for case_id, fixture in fixtures.items():
+            self.assertIsInstance(fixture.get("files"), dict, case_id)
+            self.assertIsInstance(fixture.get("changes", {}), dict, case_id)
+
 
 if __name__ == "__main__":
     unittest.main()
