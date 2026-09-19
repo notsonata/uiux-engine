@@ -1,68 +1,98 @@
 ---
 name: design-system
-description: Discover, document, extend, or define a product design system including tokens, typography, spacing, color roles, components, variants, interaction states, and usage rules. Use before restyling an existing product or when repeated UI patterns are becoming inconsistent.
+description: Discover the design system already encoded in a product, consolidate it into DESIGN.md, define genuine gaps, and flag off-system values instead of silently inventing them. Internal reasoning skill used by ux-design, ux-review, and restyle.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "2.0.0"
   category: ui-ux
+  visibility: internal
 ---
 
 # Design System
 
-## Objective
+## Purpose
 
-Increase consistency without forcing every problem into the same component.
+Create one source of truth for visual and interaction decisions while respecting the system the product already has.
 
-## Existing product discovery
+## Inspect before inventing
 
-Before creating new tokens or components, inspect available evidence such as:
-- CSS variables or theme files;
-- design tokens;
-- Tailwind/theme configuration;
-- component libraries;
-- recurring spacing and typography values;
-- button/input/table/dialog variants;
-- focus, hover, selected, disabled, loading, and error states;
-- icon sets;
+Before proposing tokens or components, inspect available evidence:
+- CSS variables and theme files;
+- Tailwind or framework configuration;
+- typography definitions;
+- spacing values and layout/grid rules;
+- recurring component variants;
+- icon library and sizing;
+- motion/easing values;
 - dark/light themes;
-- existing documentation.
+- the most reused components;
+- existing design documentation.
 
-Separate intentional patterns from accidental repetition.
+Repeated values are evidence, not automatically good design. Separate intentional patterns from accidental drift.
 
-## Token model
+## Foundation model
 
-Prefer semantic tokens over raw values for reusable decisions:
-- foreground/background roles;
-- surfaces;
-- interactive/accent roles;
-- status roles;
-- borders/focus;
-- typography roles;
-- spacing/radius/elevation scales where useful.
+Consolidate the system from the bottom up:
 
-Do not create a token for every isolated value.
+1. **Foundations:** semantic color roles, typography, spacing/grid, radius/elevation, iconography, motion.
+2. **Components:** variants and behavior built from those foundations.
+3. **Patterns:** recurring composition such as forms, navigation, tables, dialogs, and empty states.
+4. **Product surfaces:** screens composed from the same system.
 
-## Components
+### Color
+Prefer semantic tokens such as background, surface, text, border, brand, and status roles over scattered raw values. Themes should change token values rather than component intent.
 
-A shared component is justified when multiple instances share meaning and behavior, not merely appearance.
+### Typography
+Document named roles and a coherent scale, including weight and line-height. Avoid arbitrary one-off sizes.
 
-Document:
-- purpose;
-- variants;
-- states;
-- content rules;
-- accessibility behavior;
-- responsive behavior;
-- anti-patterns.
+### Spacing and grid
+Use a consistent base rhythm. A 4 px or 8 px family is a useful default when the existing product does not already establish one. Define container, column, gutter, and breakpoint behavior only as needed by the product.
 
-## Extension rule
+### Components
+Every reusable interactive component must define relevant states such as default, hover, active/pressed, focus, disabled, selected, loading, and error.
 
-When a new UI need appears:
-1. reuse an existing pattern if semantics match;
-2. add a variant if behavior is fundamentally the same;
-3. create a new component when semantics or interaction materially differ;
-4. avoid one-off overrides that silently fork the system.
+### Iconography
+Use a consistent icon family, optical weight, and sizing scheme. The visible glyph may be small while the interaction target remains comfortably usable.
 
-## Output
+### Motion
+Define a small duration/easing vocabulary. Motion should communicate relationship or feedback, remain interruptible, and respect reduced-motion preferences.
 
-Produce a concise system inventory and any proposed additions. If documenting from scratch, include principles, tokens, typography, components, interaction states, and examples of when not to use each pattern.
+## Accessibility and responsive rules
+
+DESIGN.md must include:
+- focus treatment;
+- non-color status cues;
+- contrast expectations;
+- minimum practical target sizing;
+- responsive transformation principles;
+- keyboard interaction rules for custom controls where applicable.
+
+## DESIGN.md
+
+Write or update `DESIGN.md` at the project root with:
+1. product/design principles;
+2. visual character;
+3. color tokens;
+4. typography roles;
+5. spacing/layout/grid;
+6. radius, borders, elevation;
+7. iconography;
+8. component variants and states;
+9. motion;
+10. responsive and accessibility rules;
+11. voice/copy conventions where established;
+12. extension policy and known exceptions.
+
+Each important value should have a reason, not merely a number.
+
+## Gap questions
+
+If the existing codebase leaves genuine ambiguity, ask at most five high-leverage questions. Do not interrogate the user about decisions already encoded in the product.
+
+## Enforcement
+
+After DESIGN.md exists:
+- reuse system values;
+- flag off-system values;
+- either replace them with an existing token or record a deliberate extension;
+- never create silent one-off tokens merely to make one screen look good.
