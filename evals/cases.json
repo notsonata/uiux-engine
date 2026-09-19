@@ -1,0 +1,143 @@
+[
+  {
+    "id": "design-destructive-settings",
+    "command": "ux-design",
+    "prompt": "Design a workspace settings screen where owners can rename the workspace, transfer ownership, and permanently delete it.",
+    "setup": "No existing screen is provided. Assume a typical authenticated web application.",
+    "must_demonstrate": [
+      "Identify permanent deletion or ownership transfer as high-consequence actions.",
+      "Produce a structural wireframe before polished implementation.",
+      "Cover loading, empty, partial, error, success, and offline applicability.",
+      "Separate primary settings from destructive actions.",
+      "Define confirmation, recovery, or proportional protection.",
+      "Produce implementation-ready acceptance criteria before coding."
+    ],
+    "must_not": [
+      "Jump directly into React/CSS implementation before the design gate.",
+      "Treat Delete Workspace as a normal primary action.",
+      "Invent user research findings."
+    ],
+    "rationale": "Exercises intent discovery, risk hierarchy, state completeness, and destructive-action safety."
+  },
+  {
+    "id": "design-existing-system",
+    "command": "ux-design",
+    "prompt": "Redesign the analytics overview so operators can identify failed jobs faster. The repository already contains DESIGN.md and a component library.",
+    "setup": "DESIGN.md and reusable components already exist.",
+    "must_demonstrate": [
+      "Inspect or reference the existing design system before proposing new visual values.",
+      "Prioritize failed-job detection and operational scanability.",
+      "Produce a wireframe and spec before implementation.",
+      "Use or deliberately extend existing tokens/components rather than silently forking them."
+    ],
+    "must_not": [
+      "Replace the existing design language simply to make the screen look newer.",
+      "Default to decorative cards or gradients without a task reason."
+    ],
+    "rationale": "Ensures ux-design respects an existing system and operational density."
+  },
+  {
+    "id": "audit-screenshot-limited-evidence",
+    "command": "ux-audit",
+    "prompt": "Audit this single screenshot of a checkout form.",
+    "setup": "Only one static screenshot is available. No runtime, mobile viewport, or keyboard behavior is observable.",
+    "must_demonstrate": [
+      "Separate directly observed issues from inferred or unverified behavior.",
+      "Prioritize findings by severity and user impact.",
+      "Give a concrete change and verification method for each finding.",
+      "Call out runtime, responsive, or keyboard behavior as unverified where appropriate."
+    ],
+    "must_not": [
+      "Claim the interface is fully accessible from a screenshot alone.",
+      "Assign an arbitrary numerical UX score.",
+      "Modify code without a request to fix findings."
+    ],
+    "rationale": "Tests evidence discipline and audit uncertainty."
+  },
+  {
+    "id": "audit-state-heavy-flow",
+    "command": "ux-audit",
+    "prompt": "Audit the upload-and-processing screen for a transcription product.",
+    "setup": "The screen supports file selection, upload progress, server processing, failure, retry, cancellation, and completed output.",
+    "must_demonstrate": [
+      "Inspect async state completeness and distinguish upload from processing.",
+      "Check queued/running/failed/cancelled/completed feedback.",
+      "Evaluate recovery and retry behavior.",
+      "Rank missing or ambiguous states above cosmetic polish when they threaten task completion."
+    ],
+    "must_not": [
+      "Reduce the audit to visual styling.",
+      "Treat a transient toast as sufficient persistent status for long-running work."
+    ],
+    "rationale": "Exercises state completeness and feedback in an asynchronous workflow."
+  },
+  {
+    "id": "review-regression-scope",
+    "command": "ux-review",
+    "prompt": "Review the current diff before merge.",
+    "setup": "The diff changes a table row action and loading treatment. An unrelated legacy settings page also has known usability issues.",
+    "must_demonstrate": [
+      "Inspect the current diff as the primary scope.",
+      "Report UX regressions introduced by the changed table/loading behavior.",
+      "Distinguish pre-existing legacy problems from merge-relevant regressions.",
+      "Provide patch direction and verification."
+    ],
+    "must_not": [
+      "Turn the review into a whole-product audit.",
+      "Report unrelated legacy issues as blockers for this merge."
+    ],
+    "rationale": "Protects the diff-scoped contract."
+  },
+  {
+    "id": "review-copy-and-affordance",
+    "command": "ux-review",
+    "prompt": "Review the current diff before merge.",
+    "setup": "The diff replaces a labeled destructive button with an unlabeled trash icon and changes success copy from 'Draft saved' to 'Done'.",
+    "must_demonstrate": [
+      "Identify loss of affordance and accessible naming risk.",
+      "Identify the weaker success/status copy where meaning is lost.",
+      "Tie findings to changed files/surfaces and user impact.",
+      "Keep severity proportional to actual consequence."
+    ],
+    "must_not": [
+      "Recommend unrelated visual redesign.",
+      "Invent issues outside the diff."
+    ],
+    "rationale": "Exercises affordance and copy review on a small diff."
+  },
+  {
+    "id": "restyle-preserve-function",
+    "command": "restyle",
+    "prompt": "Restyle the dashboard to feel more editorial and less generic.",
+    "setup": "The dashboard behavior, information architecture, and copy are already approved. DESIGN.md exists.",
+    "must_demonstrate": [
+      "Diagnose type, color, space, and finish.",
+      "Apply DESIGN.md and explain before/after changes.",
+      "Preserve application logic, data flow, information meaning, and copy meaning.",
+      "Re-check focus, contrast, status cues, targets, and reduced motion."
+    ],
+    "must_not": [
+      "Change feature scope.",
+      "Rewrite approved copy for stylistic reasons.",
+      "Re-architect components solely for visual preference."
+    ],
+    "rationale": "Tests the strict visual-only boundary."
+  },
+  {
+    "id": "restyle-detect-structural-problem",
+    "command": "restyle",
+    "prompt": "Restyle this settings page.",
+    "setup": "During inspection, the agent notices that two destructive actions are mixed into the main save flow and require an information-architecture change.",
+    "must_demonstrate": [
+      "Perform only safe visual-system changes that fit the existing structure.",
+      "Report the structural UX issue separately as outside restyle scope.",
+      "Route structural redesign work to ux-design.",
+      "Return a before/after for the visual changes actually made."
+    ],
+    "must_not": [
+      "Silently change the workflow or information architecture under a restyle request.",
+      "Ignore the structural risk completely."
+    ],
+    "rationale": "Ensures restyle reports structural problems without expanding its own scope."
+  }
+]
